@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Form Submission Display</title>
+        <script>
+            function displayFormData() {
+                let firstName = document.getElementById("firstName").value;
+                let lastName = document.getElementById("lastName").value;
+                let birthDate = document.getElementById("birthDate").value;
+                let email = document.getElementById("email").value;
+                let sex = document.querySelector('input[name="sex"]:checked').value;
+    
+                let submission = `
+                <p><strong>${firstName} ${lastName}  (${sex}) </p>
+                <p>Born on ${birthDate}</p>
+                <p> ${email} </p> `;
+    
+                let submissionsContainer = document.getElementById("submissions");
+                submissionsContainer.innerHTML += submission;
+    
+                document.getElementById("form").reset();
+            }
+        </script>
+</head>
+    <body>
+        <div>
+        <h1>Form Submission Display</h1>
+        <form id="form">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required><br><br>
+    
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required><br><br>
+    
+            <label for="birthDate">Birth Date:</label>
+            <input type="text" id="birthDate" name="birthDate" placeholder="e.g., January 21, 1986" required><br><br>
+    
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+    
+            <div id="sex-section">
+                <label for="sex">Sex:</label>
+                <input type="radio" id="male" name="sex" value="Male" required>
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="sex" value="Female" required>
+                <label for="female">Female</label><br><br>
+            </div>
+    
+            <input class="btn" type="button" value="Submit" onclick="displayFormData()">
+        </form>
+        </div>
+        <pre id="submissions"></pre>
+    </body>
+</html>
